@@ -1,13 +1,15 @@
 {
   "name": "gpu-pulse",
   "version": "0.1.0",
+  "license": "MIT",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@12.21.0",
   "scripts": {
     "docs:dev": "pnpm --filter docs dev",
     "docs:build": "pnpm --filter docs build",
-    "typecheck": "pnpm -r --if-present typecheck"
+    "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test"
   },
   "devDependencies": {
     "typescript": "^5.9.0"

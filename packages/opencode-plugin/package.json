@@ -1,16 +1,35 @@
 {
   "name": "opencode-gpu-pulse",
   "version": "0.1.0",
+  "license": "MIT",
+  "description": "OpenCode TUI plugin that shows GPU usage and tokens/s of the local model in the sidebar.",
   "type": "module",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "llama.cpp",
+    "gpu"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSisques/gpu-pulse.git",
+    "directory": "packages/opencode-plugin"
+  },
   "exports": {
     "./tui": "./src/tui.tsx"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
-    "@gpu-pulse/collectors": "workspace:*",
-    "@opencode/plugin": "latest"
+    "@gpu-pulse/collectors": "workspace:^",
+    "@opencode/plugin": "^2.4.1"
   },
   "peerDependencies": {
     "@opentui/core": ">=0.8.0",
