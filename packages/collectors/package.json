@@ -1,6 +1,7 @@
 {
   "name": "@gpu-pulse/collectors",
   "version": "0.1.0",
+  "license": "MIT",
   "description": "Inference and GPU collectors for local model servers (llama.cpp router, nvidia-smi).",
   "type": "module",
   "repository": {

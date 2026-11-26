@@ -1,6 +1,7 @@
 {
   "name": "opencode-gpu-pulse",
   "version": "0.1.0",
+  "license": "MIT",
   "description": "OpenCode TUI plugin that shows GPU usage and tokens/s of the local model in the sidebar.",
   "type": "module",
   "keywords": [
