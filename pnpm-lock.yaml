@@ -203,10 +203,10 @@ importers:
   packages/opencode-plugin:
     dependencies:
       '@gpu-pulse/collectors':
-        specifier: workspace:*
+        specifier: workspace:^
         version: link:../collectors
       '@opencode/plugin':
-        specifier: latest
+        specifier: ^2.4.1
         version: 2.4.1(@opentelemetry/semantic-conventions@1.45.0)(@opentui/core@0.9.9(typescript@5.9.3)(web-tree-sitter@0.25.10))(@opentui/solid@0.9.9(solid-js@1.9.20)(typescript@5.9.3)(web-tree-sitter@0.25.10))(redis@6.4.0(@opentelemetry/api@1.9.0))(solid-js@1.9.20)(vite@8.3.8(@types/node@24.19.2)(yaml@2.9.1))
     devDependencies:
       '@opentui/core':

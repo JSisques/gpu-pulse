@@ -1,9 +1,22 @@
 {
   "name": "@gpu-pulse/collectors",
   "version": "0.1.0",
+  "description": "Inference and GPU collectors for local model servers (llama.cpp router, nvidia-smi).",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSisques/gpu-pulse.git",
+    "directory": "packages/collectors"
+  },
   "exports": {
     ".": "./src/index.ts"
+  },
+  "files": [
+    "src",
+    "!src/**/*.test.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "typecheck": "tsc -p tsconfig.json",

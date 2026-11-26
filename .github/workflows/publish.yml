@@ -1,0 +1,58 @@
+name: publish
+
+# Publishing is decoupled from versioning: release-please cuts the GitHub
+# release, and this workflow ships that tag to npm via trusted publishing (OIDC).
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag to publish (e.g. v0.1.0)
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || inputs.tag }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      # Trusted publishing needs npm >= 11.5.1.
+      - run: npm install -g npm@latest
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+
+      # pnpm pack rewrites workspace: ranges; npm publish performs the OIDC exchange.
+      # Order matters: the plugin depends on the collectors package.
+      - name: Publish packages
+        run: |
+          mkdir -p "$RUNNER_TEMP/tarballs"
+          for dir in packages/collectors packages/opencode-plugin; do
+            name=$(node -p "require('./$dir/package.json').name")
+            version=$(node -p "require('./$dir/package.json').version")
+            if npm view "$name@$version" version >/dev/null 2>&1; then
+              echo "$name@$version already published, skipping"
+              continue
+            fi
+            tarball=$(cd "$dir" && pnpm pack --pack-destination "$RUNNER_TEMP/tarballs" | tail -n 1)
+            npm publish "$tarball" --access public
+          done
