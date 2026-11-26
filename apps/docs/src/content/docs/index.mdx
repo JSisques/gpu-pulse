@@ -1,0 +1,22 @@
+---
+title: gpu-pulse
+description: OpenCode TUI plugin that shows the GPU and inference metrics of the active local model.
+---
+
+gpu-pulse adds a panel to the OpenCode TUI sidebar. When the active model runs locally (for example on llama.cpp), the panel shows:
+
+- the model in use,
+- the GPU (or GPUs) that hold the model, with utilization, VRAM, temperature, and power,
+- inference throughput: prompt and generation tokens per second.
+
+## How these docs are organized
+
+- **Architecture**: how the pieces fit together.
+- **Decisions (ADR)**: why things are the way they are. One file per decision, never rewritten; superseded decisions link to their replacement.
+- **Specs**: every metric is defined here (source, unit, refresh rate) before it is implemented.
+- **Guides**: installation and configuration.
+
+## MVP scope
+
+- NVIDIA GPU on Windows, read through `nvidia-smi`.
+- llama.cpp (`llama-server`) running on the same machine as OpenCode.
