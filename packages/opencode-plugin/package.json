@@ -1,6 +1,6 @@
 {
   "name": "opencode-gpu-pulse",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     "./tui": "./src/tui.tsx"
