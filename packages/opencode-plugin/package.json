@@ -1,0 +1,27 @@
+{
+  "name": "opencode-gpu-pulse",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    "./tui": "./src/tui.tsx"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@gpu-pulse/collectors": "workspace:*",
+    "@opencode/plugin": "latest"
+  },
+  "peerDependencies": {
+    "@opentui/core": ">=0.8.0",
+    "@opentui/solid": ">=0.8.0",
+    "solid-js": ">=1.9.12"
+  },
+  "devDependencies": {
+    "@opentui/core": "^0.9.9",
+    "@types/node": "^24.0.0",
+    "@opentui/solid": "^0.9.9",
+    "solid-js": "^1.9.12",
+    "typescript": "^5.9.0"
+  }
+}
